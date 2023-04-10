@@ -19,9 +19,9 @@
                             <button  onclick="location.href='{{url("admin?t=sinavlarim")}}'" type="button" class="btn btn-lg btn-icon-text loader"><i
                                     class="fas fa-pen size-32"></i><span>{{e2("Sınavlarım")}}</span></button>
                             <button   onclick="location.href='{{url("admin?t=sonuclarim")}}'"  type="button" class="btn btn-lg btn-icon-text loader"><i
-                                    class="fa fa-search-plus zoomin size-32"></i><span>{{e2("Yakınlaştır")}}</span></button>
+                                    class="fa fa-chart-pie size-32"></i><span>{{e2("Sonuçlarım")}}</span></button>
                             <button   onclick="location.href='{{url("admin?t=analizlerim")}}'" type="button" class="btn btn-lg btn-icon-text"><i
-                                    class="fas fa-search-minus zoomout size-32 loader"></i><span>{{e2("Uzaklaştır")}}</span></button>
+                                    class="fas fa-chart-line size-32 loader"></i><span>{{e2("Analizlerim")}}</span></button>
                 </div>
             </li>
             

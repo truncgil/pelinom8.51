@@ -116,15 +116,22 @@ class AdminController extends Controller
 		$search_contents = null;
 		$seviye = null;
 		$users = null;
+		
+		$miktar = 10;
+		//dd($_SESSION);
+		/*
 		if(oturumisset("miktar")) {
 			$miktar = oturum("miktar");
 		} else {
 			$miktar = 10;
 		}
+		*/
+		/*
 		if(isset($p['m'])) {
 			$miktar = $p['m'];
 			oturum("miktar",$p['m']);
 		} 
+		*/
 		switch($type) {
 			case "users" : 
 			
@@ -160,7 +167,7 @@ class AdminController extends Controller
 				})
 				
 				->orderBy("id","DESC")
-				->simplePaginate($miktar);;
+				->simplePaginate($miktar);
 			break;
 			case "contents":
 			//content alanında çalışacak şeyler öncelikle ilgili itemin içeriği ve onun alt içerikleri

@@ -24,10 +24,9 @@
                                 <!-- Header -->
                                 <div class="px-30 py-10">
                                     <a class="link-effect font-w700" href="#">
-                                        <img src="{{url('assets/logo.svg')}}" width="128" class="img-fluid" alt="" />
+                                        <img src="{{url('assets/logo.svg')}}" width="256" class="img-fluid" alt="" />
                                     </a>
-                                    <h1 class="h3 font-w700 mt-30 mb-10">{{e2("Welcome")}}</h1>
-                                    <h2 class="h5 font-w400 text-muted mb-0">{{e2("Please sign in")}}</h2>
+                                    <h2 class="h5 font-w400 text-muted mb-0">{{e2("Giriş Yap")}}</h2>
                                 </div>
                                 <!-- END Header -->
 

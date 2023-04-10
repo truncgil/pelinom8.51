@@ -1,7 +1,5 @@
 <?php 
-Artisan::call('cache:clear');
-Artisan::call('config:clear');
-Artisan::call('view:clear');
+
 
 if(getisset("ajax")) {
 	?>
@@ -26,17 +24,16 @@ if(getisset("ajax")) {
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>{!! strip_tags($__env->yieldContent('title','')) !!}</title>
+    <title>@yield('title')</title>
     <meta name="description" content="">
     <meta name="author" content="Truncgil Technology">
-    <meta property="og:title" content="">
+    <meta property="og:title" content="@yield('title')">
     <meta property="og:site_name" content="https://www.truncgil.com.tr/">
-    <meta property="og:description" content="">
+    <meta property="og:description" content="@yield('description')">
     <meta property="og:type" content="app">
     <meta property="og:url" content>
     <meta property="og:image" content>
 	<div class="header-zone">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{url("assets/img/favicon.png")}}">
 		<!-- Page JS Plugins CSS -->
         <link rel="stylesheet" href="{{ asset('assets/admin/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/admin/js/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
@@ -54,7 +51,6 @@ if(getisset("ajax")) {
 	
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">
 	<link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
-	<script type="text/javascript" src="{{asset("assets/html2canvas.min.js")}}"></script>
    
 
 <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:100,300,400,700,900&display=swap&subset=latin-ext" rel="stylesheet">
@@ -67,8 +63,6 @@ if(getisset("ajax")) {
 	<link rel="stylesheet" href="{{asset('assets/admin/css/custom.css?'.rand(1111,9999))}}" />
 	<link rel="stylesheet" href="{{asset('assets/admin/css/tree.css')}}" />
 	<link rel="stylesheet" href="{{asset('assets/admin/css/theme.css')}}" />
-	<script type="text/javascript" src="{{asset("assets/chart/dist/Chart.min.js")}}"></script>
-	<script type="text/javascript" src="{{asset("assets/chart/samples/utils.js")}}"></script>
 	<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
 <script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
@@ -81,16 +75,11 @@ if(getisset("ajax")) {
 <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.21/sorting/date-de.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.min.js"></script>
-<script type="text/javascript" src="{{url('assets/barcode.js')}}"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.min.css" />
 
 
 
-<script type="text/javascript" src="{{url("assets/hammer.min.js")}}"></script>
-<script type="text/javascript" src="{{asset("assets/js/debounce.js")}}"></script>
 <script src="{{ asset('assets/admin/js/plugins/dropzonejs/dropzone.min.js') }}"></script>
-<script src="{{url("assets/JsBarcode.all.min.js")}}"></script>
-<script src="{{url("assets/qrcode.min.js")}}"></script>
 <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -103,6 +92,8 @@ if(getisset("ajax")) {
                 XLSX.writeFile(wb, fn || ('{!! trim(strip_tags($__env->yieldContent('title'))) !!}.' + (type || 'xlsx')));
         }
 </script>
+<script src="https://unpkg.com/konva@8/konva.min.js"></script>
+
 </div>
 </head>
 
@@ -120,7 +111,6 @@ if(getisset("ajax")) {
                         <i class="fa fa-times text-danger"></i>
                     </button>
                     <div class="content-header-item">
-                        <img class="img-avatar img-avatar32" src="{{asset('assets/img/user.jpg')}}" alt="">
                         <a class="align-middle link-effect text-primary-dark font-w600"
                             href="#">
 							
@@ -250,7 +240,7 @@ if(getisset("ajax")) {
 						<?php if($u->level == "Admin")  { 
                           ?>
                             <div class="btn btn-info" onclick="window.print()"><i class="fa fa-print"></i> {{e2("Print")}}</div>
-                            <div class="btn btn-success" onclick="ExportToExcel('xlsx')"><i class="fa fa-file-excel"></i> {{e2("Export Excel")}}</div> 
+                            <div class="btn btn-success d-none" onclick="ExportToExcel('xlsx')"><i class="fa fa-file-excel"></i> {{e2("Export Excel")}}</div> 
                             <a onclick="$.get('{{url("clear-cache")}}'); $(this).html('Clear!');" target="_blank" class="btn btn-circle"><i class="fa fa-sync"></i> {{__('Clear cache')}}</a>
                          <?php } ?>
                        <button type="button" class="btn btn-rounded btn-dual-secondary d-none" id="language-dropdown"
@@ -382,13 +372,11 @@ if(getisset("ajax")) {
 
         <script src="{{ asset('assets/admin/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js"></script>
-		<script type="text/javascript" src="{{asset("assets/js/jquery.mask.js")}}"></script>
 		<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
-		<script type="text/javascript" src="{{ asset('assets/js/custom2.js') }}"></script>
 		</div>
 		<!--
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />

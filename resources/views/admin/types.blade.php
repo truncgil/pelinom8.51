@@ -1,8 +1,6 @@
 @extends('admin.master')
 
-@section("title")
-<i class="fa fa-{{$c->icon}}"></i> {{@e2($c->title)}}
-@endsection
+@section("title"){{@e2($c->title)}}@endsection
 @section("desc",@$c->title." ". __("türüne ait içerikler"))
 @section('content')
 <?php $slug = str_slug($c->title); ?>

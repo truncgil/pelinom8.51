@@ -213,7 +213,7 @@ body {
         }
     }
     .mobile-footer .nav .nav-item.centerbutton .nav-link .nav-menu-popover {
-    height: 101px;
+    height: 85px;
     padding: var(--fimobile-padding);
     border-radius: var(--fimobile-rounded);
     background-color: var(--fimobile-theme-color-2);

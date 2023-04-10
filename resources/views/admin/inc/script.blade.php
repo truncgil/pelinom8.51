@@ -92,9 +92,7 @@ $(".ckeditor").each(function(){
 
 </script>
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script type="text/javascript" src="{{url('assets/touch.js')}}"></script>	
 
 <script>
 
@@ -189,6 +187,7 @@ $(".ckeditor").each(function(){
 		$(".nav-link.active").trigger("click");
 
 		$('form').attr('autocomplete','off');
+		
 
 		$( ".sortable" ).sortable({
 
@@ -227,8 +226,9 @@ $(".ckeditor").each(function(){
 		});
 
 		$( ".draggable" ).draggable();
-
+		
 		$( "ul, li" ).disableSelection();
+		
 
 	} );
 
